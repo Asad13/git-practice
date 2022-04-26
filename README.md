@@ -2,6 +2,6 @@
 
 Practacing basic git and github
 
-## Feature - A
+## Feature - B
 
-New Feature A is building
+New Feature B is building
