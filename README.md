@@ -1,7 +1,7 @@
 # Campaign Builder - Backend
 
 
-## Environment vars
+# Environment vars
 This project uses the following environment variables:
 
 | Name                                | Description                                        | Default Value                                  |
@@ -31,7 +31,7 @@ This project uses the following environment variables:
 | CLIENT_URL                          | Client url                                         | http://localhost:3000                          |
 
 
-## Pre-requisites
+# Pre-requisites
 - Install [Node.js](https://nodejs.org/en/) version 16.18.1
 - Install [PostgreSQL](https://www.postgresql.org/download/) version 15.1
 - Install [Redis](https://redis.io/docs/getting-started/installation/) version 7.0.5
@@ -39,20 +39,20 @@ This project uses the following environment variables:
 - Install [VS Code Extension for Redis]() For development only on Windows (Redis by Weijan Chen) [More Info](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-database)
 
 
-## Getting started
+# Getting started
 
-- Clone the repository
+- ### Clone the repository
 ```
-git clone  <git lab template url> <project_name>
+git clone git@github.com:Buzzier/campaign-backend.git
 ```
 
-- Install dependencies
+- ### Install dependencies
 ```
-cd <project_name>
+cd campaign-backend
 npm i
 ```
 
-- Build and run the project in development environment
+- ### Build and run the project in development environment
 ```
 npm run dev
 ```
@@ -65,7 +65,82 @@ dependencies to use it for this application only.
 You can run `npm start` in development mode too but then you have to
 run it manually everytime you make any change.
 
-- Build and run the project in production environment
+- ### Build and run the project in production environment
 ```
 npm start
+```
+
+## Start PostgreSQL
+
+- ### Connect to PostgreSQL(From Terminal/Bash)
+```
+psql -U postgres
+```
+
+Note: postgres is the default user name PostgreSQL set during installation.
+If you change it or using other user replace it with yours. Then you have
+to provide your password for the user.
+
+Note: You have to run the next commands only once(now) to setup tha database
+and users table.
+- ### Create a Database
+```
+CREATE DATABASE campaign_builder;
+```
+
+```
+\c campaign_builder;
+```
+
+```
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+```
+
+```
+CREATE TABLE users(
+    ID SERIAL,
+    uid uuid DEFAULT uuid_generate_v4 (),
+    company VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(1024) NOT NULL,
+    verified BOOLEAN DEFAULT FALSE,
+    PRIMARY KEY (uid) 
+);
+```
+
+Some useful commands for PostgreSQL:
+
+- ### To see all the tables in the campaign_builder database:
+```
+\dt
+```
+
+- ### To see all the entries of users table:
+```
+SELECT * FROM users;
+```
+
+- ### To stop PostgreSQL:
+```
+\q
+```
+
+## Start Redis
+
+- ### Connect to Redis(Bash)
+```
+sudo service redis-server start
+```
+
+- *** To Check Connection(Bash) ***
+```
+redis-cli ping
+```
+Note: If the bash replies `PONG` then the connection is okay
+
+-  *** Windows(WSL2) only : You have to connect to the Redis database through the redis extention providing the host and port ***
+
+-  *** To stop Connection after finish testing/coding(Bash) ***
+```
+sudo service redis-server stop
 ```
