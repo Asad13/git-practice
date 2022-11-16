@@ -1,3 +1,9 @@
+# Campaign Builder - Backend
+
+
+## Environment vars
+This project uses the following environment variables:
+
 | Name                                | Description                                        | Default Value                                  |
 | ----------------------------------- | -------------------------------------------------- | -----------------------------------------------|
 | NODE_ENV                            | Node Environment                                   | development                                    |
@@ -23,3 +29,43 @@
 | EMAIL_TOKEN_MAX_AGE                 | Lifespan of Email Verification Token(1 hour)       | 3600                                           |
 | SERVER_URL                          | Server url                                         | http://localhost:3001                          |
 | CLIENT_URL                          | Client url                                         | http://localhost:3000                          |
+
+
+## Pre-requisites
+- Install [Node.js](https://nodejs.org/en/) version 16.18.1
+- Install [PostgreSQL](https://www.postgresql.org/download/) version 15.1
+- Install [Redis](https://redis.io/docs/getting-started/installation/) version 7.0.5
+- Install [VS Code](https://code.visualstudio.com/download) For development
+- Install [VS Code Extension for Redis]() For development only on Windows (Redis by Weijan Chen) [More Info](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-database)
+
+
+## Getting started
+
+- Clone the repository
+```
+git clone  <git lab template url> <project_name>
+```
+
+- Install dependencies
+```
+cd <project_name>
+npm i
+```
+
+- Build and run the project in development environment
+```
+npm run dev
+```
+
+Note: You need nodemon, an npm package to run in development mode. If you don't
+have it either run `npm i -g nodemon` for installing and using it globally for
+all the node applications or `npm i -D nodemon` to install it as Dev
+dependencies to use it for this application only.
+
+You can run `npm start` in development mode too but then you have to
+run it manually everytime you make any change.
+
+- Build and run the project in production environment
+```
+npm start
+```
