@@ -70,6 +70,8 @@ run it manually everytime you make any change.
 npm start
 ```
 
+Navigate to http://localhost:3001
+If it says "Hello World" then everything is okay.
 ## Start PostgreSQL
 
 - ### Connect to PostgreSQL(From Terminal/Bash)
@@ -127,20 +129,20 @@ SELECT * FROM users;
 
 ## Start Redis
 
-- ### Connect to Redis(Bash)
+- ### Connect to Redis by Bash
 ```
 sudo service redis-server start
 ```
 
-- *** To Check Connection(Bash) ***
+- ### To Check Connection
 ```
 redis-cli ping
 ```
 Note: If the bash replies `PONG` then the connection is okay
 
--  *** Windows(WSL2) only : You have to connect to the Redis database through the redis extention providing the host and port ***
+-  ### Windows(WSL2) only : You have to connect to the Redis database through the redis extention providing the host and port
 
--  *** To stop Connection after finish testing/coding(Bash) ***
+-  ### To stop Connection after finish testing/coding
 ```
 sudo service redis-server stop
 ```
